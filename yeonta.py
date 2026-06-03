@@ -21,6 +21,15 @@ def press(event):
 
 root = tk.Tk()
 
+canvas = tk.Canvas(root)
+canvas.pack(fill= "both", expand=True)
+
+canvas.create_image(
+    0, 0,
+    image="level1.png",
+    anchor="nw"
+)
+
 label = tk.Label(root, text="0 KPS", font=("Arial", 40))
 label.pack()
 
