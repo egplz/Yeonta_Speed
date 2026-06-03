@@ -4,6 +4,10 @@
 '''
 import tkinter as tk
 import time
+from PIL import Image, ImageTk
+
+img = Image.open("level1.png")
+photo = ImageTk.PhotoImage(img)
 
 times = []
 
@@ -26,7 +30,7 @@ canvas.pack(fill= "both", expand=True)
 
 canvas.create_image(
     0, 0,
-    image="level1.png",
+    image=photo,
     anchor="nw"
 )
 
