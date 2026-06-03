@@ -44,9 +44,21 @@ def change_image(kps):
     if kps == 9:
         state = 4
     
-    if kps == 10:
+    if kps >= 10 and kps < 15:
         state = 5
+
+    if kps >= 15 and kps < 25:
+        state = 6
+
+    if kps >= 25 and kps < 50:
+        state = 7
     
+    if kps >= 50 and kps < 80:
+        state = 8
+
+    if kps >= 80:
+        state = 9
+
     elif kps <= 6:
         state = 1
     
@@ -62,20 +74,12 @@ def change_image(kps):
 root = tk.Tk()
 
 # 기본 이미지 설정
-image1 = Image.open("level1.png")
-photo1 = ImageTk.PhotoImage(image1)
-image2 = Image.open("level2.png")
-photo2 = ImageTk.PhotoImage(image2)
-image3 = Image.open("level3.png")
-photo3 = ImageTk.PhotoImage(image3)
-image4 = Image.open("level4.png")
-photo4 = ImageTk.PhotoImage(image4)
-image5 = Image.open("level5.png")
-photo5 = ImageTk.PhotoImage(image5)
-image_list = [photo1, photo2, photo3, photo4, photo5]
+image_list = [
+    ImageTk.PhotoImage(Image.open(f"level{i}.png"))
+    for i in range(1, 10)
+]
 
-img = Image.open("level1.png")
-photo = ImageTk.PhotoImage(img)
+photo = image_list[0]
 
 canvas = tk.Canvas(root)
 canvas.pack(fill= "both", expand=True)
@@ -89,6 +93,6 @@ change = canvas.create_image(
 label = tk.Label(root, text="0 KPS", font=("Arial", 40))
 label.pack()
 
-root.bind("<space>", press)
+root.bind("<Key>", press)
 
 root.mainloop()
