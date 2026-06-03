@@ -6,8 +6,15 @@ import tkinter as tk
 import time
 from PIL import Image, ImageTk
 
+# 기본 변수 설정
 times = []
+# effect = []
+current_state = 1
 
+# 기본 이미지 설정
+
+
+# kps 계산
 def press(event):
     now = time.time()
 
@@ -20,14 +27,31 @@ def press(event):
 
     label.config(text=f"{kps} KPS")
 
+    change_image(kps)
+
+# def update_effect():
+
+# 이미지 바꾸기
 def change_image(kps):
+
+    global current_state
+
     if kps >= 7:
-        img = Image.open("level2.png")
+        state = 2
+    if state != current_state:
+        
+        current_state = state
+
+        canvas.itemconfig(
+            image=
+
+        )
     
 
 root = tk.Tk()
 
 img = Image.open("level1.png")
+img = img.resize((800,600))
 photo = ImageTk.PhotoImage(img)
 
 canvas = tk.Canvas(root)
