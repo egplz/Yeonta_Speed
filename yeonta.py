@@ -6,9 +6,6 @@ import tkinter as tk
 import time
 from PIL import Image, ImageTk
 
-img = Image.open("level1.png")
-photo = ImageTk.PhotoImage(img)
-
 times = []
 
 def press(event):
@@ -23,7 +20,15 @@ def press(event):
 
     label.config(text=f"{kps} KPS")
 
+def change_image(kps):
+    if kps >= 7:
+        img = Image.open("level2.png")
+    
+
 root = tk.Tk()
+
+img = Image.open("level1.png")
+photo = ImageTk.PhotoImage(img)
 
 canvas = tk.Canvas(root)
 canvas.pack(fill= "both", expand=True)
