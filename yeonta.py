@@ -74,7 +74,7 @@ for file in os.listdir("assets"):
 
         images.append(img)
 
-photo = ImageTk.PhotoImage(images[0])
+photo = images[0]
 
 canvas = tk.Canvas(root)
 canvas.pack(fill= "both", expand=True)
