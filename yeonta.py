@@ -2,6 +2,7 @@
 레밀리아 연타 속도 측정 프로그램
 초당 입력 수에 따라 레밀님 얼굴 바뀜
 '''
+import os
 import tkinter as tk
 import time
 from PIL import Image, ImageTk
@@ -56,26 +57,24 @@ def change_image(kps):
 
         canvas.itemconfig(
             change,
-            image= image_list[current_state-1]
+            image= images[current_state-1]
         )
 
 root = tk.Tk()
 
 # 기본 이미지 설정
-image1 = Image.open("level1.png")
-photo1 = ImageTk.PhotoImage(image1)
-image2 = Image.open("level2.png")
-photo2 = ImageTk.PhotoImage(image2)
-image3 = Image.open("level3.png")
-photo3 = ImageTk.PhotoImage(image3)
-image4 = Image.open("level4.png")
-photo4 = ImageTk.PhotoImage(image4)
-image5 = Image.open("level5.png")
-photo5 = ImageTk.PhotoImage(image5)
-image_list = [photo1, photo2, photo3, photo4, photo5]
+images = []
 
-img = Image.open("level1.png")
-photo = ImageTk.PhotoImage(img)
+for file in os.listdir("assets"):
+    if file.endswith(".png"):
+        path = os.path.join("assets", file)
+
+        img = Image.open(path)
+        img = ImageTk.PhotoImage(img)
+
+        images.append(img)
+
+photo = ImageTk.PhotoImage(images[0])
 
 canvas = tk.Canvas(root)
 canvas.pack(fill= "both", expand=True)
