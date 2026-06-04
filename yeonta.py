@@ -73,6 +73,9 @@ def change_image(kps):
 
 root = tk.Tk()
 
+title = "레밀리아 연타 속도 측정 프로그램"
+root.title(title)
+
 # 기본 이미지 설정
 image_list = [
     ImageTk.PhotoImage(Image.open(f"level{i}.png"))
