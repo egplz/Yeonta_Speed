@@ -76,9 +76,11 @@ root = tk.Tk()
 title = "레밀리아 연타 속도 측정 프로그램"
 root.title(title)
 
-# 기본 이미지 설정
+root.resizable(False, False)
+
+# 이미지 불러오기
 image_list = [
-    ImageTk.PhotoImage(Image.open(f"level{i}.png"))
+    ImageTk.PhotoImage(Image.open(f"level{i}.png").resize((300, 300)))
     for i in range(1, 10)
 ]
 
@@ -88,9 +90,9 @@ canvas = tk.Canvas(root)
 canvas.pack(fill= "both", expand=True)
 
 change = canvas.create_image(
-    0, 0,
+    190, 150,
     image=photo,
-    anchor="nw"
+    anchor="center"
 )
 
 label = tk.Label(root, text="0 KPS", font=("Arial", 40))
