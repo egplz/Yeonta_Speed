@@ -9,7 +9,6 @@ from PIL import Image, ImageTk
 
 # 기본 변수 설정
 times = []
-# effect = []
 current_state = 1
 state = 1
 
@@ -27,8 +26,6 @@ def press(event):
     label.config(text=f"{kps} KPS")
 
     change_image(kps)
-
-# def update_effect():
 
 # 이미지 바꾸기
 def change_image(kps):
@@ -69,9 +66,10 @@ def change_image(kps):
 
         canvas.itemconfig(
             change,
-            image= images[current_state-1]
+            image= image_list[current_state-1]
         )
 
+# GUI 세팅
 root = tk.Tk()
 
 title = "레밀리아 연타 속도 측정 프로그램"
@@ -80,7 +78,6 @@ root.title(title)
 root.resizable(False, False)
 
 # 이미지 불러오기
-
 image_list = []
 
 for file in os.listdir("assets"):
@@ -93,6 +90,7 @@ for file in os.listdir("assets"):
 
 photo = image_list[0]
 
+# 이미지 삽입
 canvas = tk.Canvas(root)
 canvas.pack(fill= "both", expand=True)
 
