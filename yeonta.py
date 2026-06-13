@@ -89,7 +89,7 @@ for file in os.listdir("assets"):
 
         img = ImageTk.PhotoImage(Image.open(path).resize((300, 300)))
 
-        images.append(image_list)
+        image_list.append(img)
 
 photo = image_list[0]
 
